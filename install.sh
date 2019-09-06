@@ -125,6 +125,7 @@ brew cask install \
 	insomnia \
 	postico \
 	sloth \
+	figma \
 	#
 	## SetApp apps
 	setapp \
@@ -257,4 +258,5 @@ mas install 424389933 # Final Cut Pro
 # Final notes
 ############
 
+echo "Manually install: Docker (https://hub.docker.com/editions/community/docker-ce-desktop-mac)"
 echo "Manually install with Setapp: Be Focused, KeyKey Typing tutor, SideNotes"
