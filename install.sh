@@ -74,8 +74,8 @@ brew install \
 	curl \
 	# CLI for Mac App Store
 	mas \
-	rmtree \
-	imagemagick --with-webp \
+	brew-rmtree \
+	imagemagick \
 	openssh \
 	ssh-copy-id
 
