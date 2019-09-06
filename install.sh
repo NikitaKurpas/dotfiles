@@ -63,13 +63,14 @@ echo "brew installing stuff"
 brew install \
 	bash \
 	bash-completion@2 \
-    grep \
+	grep \
 	git \
 	git-lfs \
 	node \
 	nvm \
 	yarn \
 	ruby \
+	python \
 	curl \
 	# CLI for Mac App Store
 	mas \
