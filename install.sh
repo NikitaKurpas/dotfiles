@@ -17,11 +17,11 @@ echo "Hello $(whoami)! Let's get you set up."
 echo "mkdir -p $(HOME)/code"
 mkdir -p "$(HOME)/code"
 
-echo "mkdir -p $(HOME)/code/personal"
-mkdir -p "$(HOME)/code/personal"
+echo "mkdir -p ${HOME}/code/personal"
+mkdir -p "${HOME}/code/personal"
 
 echo "mkdir -p $(HOME)/code/other"
-mkdir -p "$(HOME)/code/other"
+mkdir -p "${HOME}/code/other"
 
 ############
 # Prerequisites
