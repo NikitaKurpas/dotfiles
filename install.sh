@@ -62,7 +62,7 @@ brew cask install iterm2
 echo "brew installing stuff"
 brew install \
 	bash \
-	bash-completion2 \
+	bash-completion@2 \
     grep \
 	git \
 	git-lfs \
@@ -84,15 +84,13 @@ brew cleanup
 # Fonts
 ############
 echo "installing fonts"
-brew cask install font-fira-code # For WS and VSCode
+brew cask install font-fira-code # For WebSstorm and VSCode
 brew cask install font-firamono-nerd-font # For terminals
 
 ############
 # Brew cask GUI tools
 ############
 
-# Sloth is a Mac application that displays all open files and sockets in use by all running processes
-# on your system. This makes it easy to inspect which apps are using which files and sockets.
 echo "brew cask installing stuff"
 brew cask install \
 	#
@@ -124,6 +122,7 @@ brew cask install \
 	postman \
 	insomnia \
 	postico \
+	# Sloth is a Mac application that displays all open files and sockets in use by all running processes on your system
 	sloth \
 	figma \
 	#
@@ -168,7 +167,7 @@ ln -s "${HOME}/dotfiles/.ssh/config" "${HOME}/.ssh/config"
 # SSH key
 mkdir -p ~/.ssh
 
-echo "Generating an RSA token for personal account"
+echo "Generating an RSA token"
 ssh-keygen -t rsa -b 4096 -C "nikitakurpas@gmail.com"
 eval "$(ssh-agent -s)"
 echo "run 'pbcopy < ~/.ssh/id_rsa.pub' and paste that into GitHub"
@@ -184,8 +183,7 @@ defaults write com.googlecode.iterm2.plist PrefsCustomFolder -string "~/dotfiles
 # Tell iTerm2 to use the custom preferences in the directory
 defaults write com.googlecode.iterm2.plist LoadPrefsFromCustomFolder -bool true
 # Add shell integration
-curl -L https://iterm2.com/shell_integration/zsh \
--o ~/.iterm2_shell_integration.zsh
+curl -L https://iterm2.com/shell_integration/zsh -o ~/.iterm2_shell_integration.zsh
 
 ############
 # System customizations
