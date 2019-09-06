@@ -14,13 +14,13 @@ while true; do sudo -n true; sleep 60; kill -0 "$$" || exit; done 2>/dev/null &
 
 echo "Hello $(whoami)! Let's get you set up."
 
-echo "mkdir -p $(HOME)/code"
-mkdir -p "$(HOME)/code"
+echo "mkdir -p ${HOME}/code"
+mkdir -p "${HOME}/code"
 
 echo "mkdir -p ${HOME}/code/personal"
 mkdir -p "${HOME}/code/personal"
 
-echo "mkdir -p $(HOME)/code/other"
+echo "mkdir -p ${HOME}/code/other"
 mkdir -p "${HOME}/code/other"
 
 ############
@@ -67,12 +67,8 @@ brew install \
 	git \
 	git-lfs \
 	node \
-	nvm \
 	yarn \
-	ruby \
 	python \
-	curl \
-	# CLI for Mac App Store
 	mas \
 	brew-rmtree \
 	imagemagick \
@@ -80,6 +76,8 @@ brew install \
 	ssh-copy-id
 
 brew cleanup
+
+curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.34.0/install.sh | bash
 
 ############
 # Fonts
@@ -93,52 +91,35 @@ brew cask install font-firamono-nerd-font # For terminals
 ############
 
 echo "brew cask installing stuff"
+#
+## Essential apps
 brew cask install \
-	#
-	## Essential apps
 	google-chrome \
 	skype \
 	slack \
 	1password \
 	authy \
 	grammarly \
-	#
-	## QuickLook plugins
-	# for code
+	setapp
+#
+## QuickLook plugins
+brew cask install \
 	qlcolorcode \
-	# for markdown
 	qlmarkdown \
-	# for files without extension
 	qlstephen \
-	# for JSON files
 	quicklook-json \
-	# for WebP files
-	webpquicklook \
-	#
-	## Dev apps
+	webpquicklook
+#
+## Dev apps
+brew cask install \
 	jetbrains-toolbox \
-	webstorm \
 	visual-studio-code \
 	sourcetree \
 	postman \
 	insomnia \
 	postico \
-	# Sloth is a Mac application that displays all open files and sockets in use by all running processes on your system
 	sloth \
-	figma \
-	#
-	## SetApp apps
-	setapp \
-	bartender \
-	sip \
-	numi \
-	forklift \
-	istat-menus \
-	paste \
-	cleanmymac \
-	mosaic \
-	proxyman \
-	wallpaper-wizard
+	figma
 
 ############
 # Global NPM deps
@@ -158,13 +139,6 @@ gem install colorls
 echo "installing powerlevel9k theme for oh-my-zsh"
 git clone https://github.com/bhilburn/powerlevel9k.git ~/.oh-my-zsh/custom/themes/powerlevel9k
 
-# dotfiles
-echo "cloning dotfiles"
-git clone git@github.com:NikitaKurpas/dotfiles.git "${HOME}/dotfiles"
-ln -s "${HOME}/dotfiles/.zshrc" "${HOME}/.zshrc"
-ln -s "${HOME}/dotfiles/.gitignore_global" "${HOME}/.gitignore_global"
-ln -s "${HOME}/dotfiles/.ssh/config" "${HOME}/.ssh/config"
-
 # SSH key
 mkdir -p ~/.ssh
 
@@ -172,6 +146,14 @@ echo "Generating an RSA token"
 ssh-keygen -t rsa -b 4096 -C "nikitakurpas@gmail.com"
 eval "$(ssh-agent -s)"
 echo "run 'pbcopy < ~/.ssh/id_rsa.pub' and paste that into GitHub"
+
+# dotfiles
+echo "cloning dotfiles"
+git clone https://github.com/NikitaKurpas/dotfiles.git "${HOME}/dotfiles"
+if [ -f "${HOME}/.zshrc" ]; then rm "${HOME}/.zshrc"; fi
+ln -s "${HOME}/dotfiles/.zshrc" "${HOME}/.zshrc"
+ln -s "${HOME}/dotfiles/.bash_profile" "${HOME}/.bash_profile"
+ln -s "${HOME}/dotfiles/.ssh/config" "${HOME}/.ssh/config"
 
 # Git config
 git config --global user.name "Nikita Kurpas"
@@ -258,4 +240,5 @@ mas install 424389933 # Final Cut Pro
 ############
 
 echo "Manually install: Docker (https://hub.docker.com/editions/community/docker-ce-desktop-mac)"
-echo "Manually install with Setapp: Be Focused, KeyKey Typing tutor, SideNotes"
+echo "Manually install with JetBrains Toolbox: WebStorm"
+echo "Manually install with Setapp: Bartender, Sip, Numi, ForkLift, iStat Menus, Paste, CleanMyMac X, Mosaic, Proxyman, Wallpaper Wizard, Be Focused, KeyKey Typing tutor, SideNotes"

@@ -2,7 +2,7 @@
 # export PATH=$HOME/bin:/usr/local/bin:$PATH
 
 # Path to your oh-my-zsh installation.
-export ZSH="/Users/nikitakurpas/.oh-my-zsh"
+export ZSH="/${HOME}/.oh-my-zsh"
 
 ################################################################
 # Powerlevel9k customization
@@ -102,26 +102,21 @@ plugins=(
   git-flow
   dotenv # load .env automatically
   osx # osx awesomness
-  docker # docker helpers
-  docker-compose # docker-compose helpers
-  npm # npm helpers
-  kubectl # kubectl helpers
-  yarn # yarn helpers
+  docker
+  docker-compose
+  yarn
+  npm
+  nvm
+  kubectl
   zsh_reload # adds the 'src' command to reload zsh config
-  vscode # adds some vscode shotcuts
-  lol # LOL
-  brew # brew shortcuts
+  vscode
+  lol
+  brew
 )
 
 source $ZSH/oh-my-zsh.sh
 
 # User configuration
-
-# Reset PATH
-if [[ -x /usr/libexec/path_helper ]]; then
-	PATH=''
-  eval `/usr/libexec/path_helper -s`
-fi
 
 # export MANPATH="/usr/local/man:$MANPATH"
 
@@ -146,15 +141,6 @@ export EDITOR='code -n -w'
 export DEFAULT_USER="nikitakurpas"
 prompt_context(){}
 
-# Shit to make node-canvas compile
-export PKG_CONFIG_PATH=/usr/local/Cellar/libffi/3.2.1/lib/pkgconfig/
-
-# ColorLS tab completion
-source $(dirname $(gem which colorls))/tab_complete.sh
-
-# iTerm2 shell integration
-source ~/.iterm2_shell_integration.zsh
-
 # Set personal aliases, overriding those provided by oh-my-zsh libs,
 # plugins, and themes. Aliases can be placed here, though oh-my-zsh
 # users are encouraged to define aliases within the ZSH_CUSTOM folder.
@@ -168,6 +154,26 @@ alias lc="colorls"
 alias llc="lc -alh"
 alias lcgs="lc -A --gs --sd"
 
-################################################################
-# Per-installation customizations go below
-################################################################
+# Path and other exports
+
+# Reset PATH
+if [[ -x /usr/libexec/path_helper ]]; then
+	PATH=''
+  eval `/usr/libexec/path_helper -s`
+fi
+
+# GNU grep
+PATH="/usr/local/opt/grep/libexec/gnubin:$PATH"
+
+export NVM_DIR="$HOME/.nvm"
+[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
+[ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
+
+# Shit to make node-canvas compile
+export PKG_CONFIG_PATH=/usr/local/Cellar/libffi/3.2.1/lib/pkgconfig/
+
+# ColorLS tab completion
+source $(dirname $(gem which colorls))/tab_complete.sh
+
+# iTerm2 shell integration
+source ~/.iterm2_shell_integration.zsh
