@@ -119,7 +119,8 @@ brew cask install \
 	insomnia \
 	postico \
 	sloth \
-	figma
+	figma \
+	toptracker
 
 ############
 # Global NPM deps
