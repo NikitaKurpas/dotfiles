@@ -155,6 +155,8 @@ if [ -f "${HOME}/.zshrc" ]; then rm "${HOME}/.zshrc"; fi
 ln -s "${HOME}/dotfiles/.zshrc" "${HOME}/.zshrc"
 ln -s "${HOME}/dotfiles/.bash_profile" "${HOME}/.bash_profile"
 ln -s "${HOME}/dotfiles/.ssh/config" "${HOME}/.ssh/config"
+cd "${HOME}/dotfiles"
+git remote set-url origin git@github.com:NikitaKurpas/dotfiles.git
 
 # Git config
 git config --global user.name "Nikita Kurpas"
