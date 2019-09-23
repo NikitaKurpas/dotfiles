@@ -72,6 +72,7 @@ brew install \
 	mas \
 	brew-rmtree \
 	imagemagick \
+	ruby \
 	openssh \
 	ssh-copy-id
 

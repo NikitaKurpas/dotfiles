@@ -163,7 +163,11 @@ if [[ -x /usr/libexec/path_helper ]]; then
 fi
 
 # GNU grep
-PATH="/usr/local/opt/grep/libexec/gnubin:$PATH"
+export PATH="/usr/local/opt/grep/libexec/gnubin:$PATH"
+
+# Ruby from brew
+export PATH="/usr/local/opt/ruby/bin:$PATH"
+export PATH="$(ruby -e 'puts Gem.bindir'):$PATH"
 
 export NVM_DIR="$HOME/.nvm"
 [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
