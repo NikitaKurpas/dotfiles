@@ -99,7 +99,7 @@ export UPDATE_ZSH_DAYS=10
 # Add wisely, as too many plugins slow down shell startup.
 plugins=(
   git
-  git-flow
+  # git-flow
   dotenv # load .env automatically
   osx # osx awesomness
   docker
@@ -107,7 +107,7 @@ plugins=(
   yarn
   npm
   nvm
-  kubectl
+  # kubectl
   zsh_reload # adds the 'src' command to reload zsh config
   vscode
   lol
@@ -153,14 +153,17 @@ alias ll="ls -alh"
 alias lc="colorls"
 alias llc="lc -alh"
 alias lcgs="lc -A --gs --sd"
+alias clr="clear && printf '\e[3J'"
+alias print_node_modules='find . -name "node_modules" -type d -prune -print | xargs du -chs'
+alias delete_node_modules='find . -name "node_modules" -type d -prune -print -exec rm -rf '{}' \;'
 
 # Path and other exports
 
 # Reset PATH
-if [[ -x /usr/libexec/path_helper ]]; then
-	PATH=''
-  eval `/usr/libexec/path_helper -s`
-fi
+#if [[ -x /usr/libexec/path_helper ]]; then
+#	PATH=''
+#  eval `/usr/libexec/path_helper -s`
+#fi
 
 # GNU grep
 export PATH="/usr/local/opt/grep/libexec/gnubin:$PATH"
@@ -181,3 +184,6 @@ source $(dirname $(gem which colorls))/tab_complete.sh
 
 # iTerm2 shell integration
 source ~/.iterm2_shell_integration.zsh
+
+# Work stuff
+export EIKAIWA_BASEDIR="$HOME/code/iknow"
