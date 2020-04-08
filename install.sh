@@ -36,8 +36,8 @@ echo "installing homebrew"
 # Brew taps
 ############
 echo "tapping required taps"
-brew tap caskroom/cask
-brew tap caskroom/fonts
+brew tap homebrew/cask-cask
+brew tap homebrew/cask-fonts
 brew tap beeftornado/rmtree # remove a formula and its unused dependencies
 
 ############
@@ -62,7 +62,6 @@ brew cask install iterm2
 echo "brew installing stuff"
 brew install \
 	bash \
-	bash-completion@2 \
 	grep \
 	git \
 	git-lfs \
@@ -78,7 +77,7 @@ brew install \
 
 brew cleanup
 
-curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.34.0/install.sh | bash
+curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.35.3/install.sh | bash
 
 ############
 # Fonts
@@ -96,11 +95,9 @@ echo "brew cask installing stuff"
 ## Essential apps
 brew cask install \
 	google-chrome \
-	skype \
 	slack \
 	1password \
 	authy \
-	grammarly \
 	setapp
 #
 ## QuickLook plugins
@@ -117,11 +114,11 @@ brew cask install \
 	visual-studio-code \
 	sourcetree \
 	postman \
-	insomnia \
-	postico \
+	# insomnia \
+	# postico \
 	sloth \
 	figma \
-	toptracker
+	# toptracker
 
 ############
 # Global NPM deps
@@ -204,9 +201,9 @@ defaults write com.apple.commerce AutoUpdate -bool true
 
 # mas install 1278508951 # Trello
 mas install 1091189122 # Bear
-mas install 824171161 # Affinity Designer
+# mas install 824171161 # Affinity Designer
 mas install 1081413713 # Gif Brewery
-mas install 1370791134 # DigiDoc 4 client
+# mas install 1370791134 # DigiDoc 4 client
 mas install 497799835 # Xcode
 mas install 424389933 # Final Cut Pro
 

@@ -10,7 +10,10 @@ export ZSH="/${HOME}/.oh-my-zsh"
 
 # Custom node major version checker
 prompt_enhanced_node_version() {
-  # local package_exists = [ -f "$PWD/package.json"]
+  if [[ ! -f "$PWD/package.json" ]]; then
+    return;
+  fi
+
   local color="green"
 
   local node_version=$(node -v 2>/dev/null)
@@ -100,10 +103,10 @@ export UPDATE_ZSH_DAYS=10
 plugins=(
   git
   # git-flow
-  dotenv # load .env automatically
+  # dotenv # load .env automatically
   osx # osx awesomness
-  docker
-  docker-compose
+  # docker
+  # docker-compose
   yarn
   npm
   nvm
@@ -111,7 +114,7 @@ plugins=(
   zsh_reload # adds the 'src' command to reload zsh config
   vscode
   lol
-  brew
+  # brew
 )
 
 source $ZSH/oh-my-zsh.sh
@@ -187,3 +190,13 @@ source ~/.iterm2_shell_integration.zsh
 
 # Work stuff
 export EIKAIWA_BASEDIR="$HOME/code/iknow"
+
+# Fuzzy matching autocomplete
+# 0 -- vanilla completion (abc => abc)
+# 1 -- smart case completion (abc => Abc)
+# 2 -- word flex completion (abc => A-big-Car)
+# 3 -- full flex completion (abc => ABraCadabra)
+zstyle ':completion:*' matcher-list '' \
+  'm:{a-z\-}={A-Z\_}' \
+  'r:[^[:alpha:]]||[[:alpha:]]=** r:|=* m:{a-z\-}={A-Z\_}' \
+  'r:|?=** m:{a-z\-}={A-Z\_}'
