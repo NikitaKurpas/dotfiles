@@ -104,7 +104,8 @@ plugins=(
   git
   # git-flow
   # dotenv # load .env automatically
-  osx # osx awesomness
+  zsh-autosuggestions
+  # osx # osx awesomness
   # docker
   # docker-compose
   yarn
@@ -112,7 +113,7 @@ plugins=(
   nvm
   # kubectl
   zsh_reload # adds the 'src' command to reload zsh config
-  vscode
+  # vscode
   lol
   # brew
 )

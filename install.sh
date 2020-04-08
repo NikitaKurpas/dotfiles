@@ -127,6 +127,7 @@ brew cask install \
 echo "installing a few global npm packages"
 npm install --global fkill-cli
 
+# TODO: I probably need brew ruby for this one...
 echo "installing a few global gems"
 gem install colorls
 
@@ -134,9 +135,11 @@ gem install colorls
 # Restore settings
 ############
 
+echo "installing useful stuff for oh-my-zsh"
 # Powerlevel9k theme
-echo "installing powerlevel9k theme for oh-my-zsh"
 git clone https://github.com/bhilburn/powerlevel9k.git ~/.oh-my-zsh/custom/themes/powerlevel9k
+# Fish-like autosuggestions for ZSH
+git clone https://github.com/zsh-users/zsh-autosuggestions ${ZSH_CUSTOM:-~/.oh-my-zsh/custom}/plugins/zsh-autosuggestions
 
 # SSH key
 mkdir -p ~/.ssh
