@@ -1,0 +1,9 @@
+#!/usr/bin/env bash
+
+declare -a dirs=("zsh" "tmux" "bin")
+
+for dir in "${dirs[@]}"
+do
+    echo "Unstowing $dir"
+    stow --delete --target=$HOME "$dir"
+done

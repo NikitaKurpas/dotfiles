@@ -65,11 +65,13 @@ alias ws='webstorm `pwd`'
 goWork() {
     cp $HOME/.ssh/id_rsa.work $HOME/.ssh/id_rsa
     cp $HOME/.ssh/id_rsa.pub.work $HOME/.ssh/id_rsa.pub
+    eval "$(ssh-agent -s)" 1>/dev/null
 }
 
 goPersonal() {
     cp $HOME/.ssh/id_rsa.personal $HOME/.ssh/id_rsa
     cp $HOME/.ssh/id_rsa.pub.personal $HOME/.ssh/id_rsa.pub
+    eval "$(ssh-agent -s)" 1>/dev/null
 }
 
 validateYaml() {
