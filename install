@@ -1,0 +1,9 @@
+#!/usr/bin/env bash
+
+declare -a dirs=("zsh" "tmux" "bin")
+
+for dir in "${dirs[@]}"
+do
+    echo "Stowing $dir"
+    stow --restow --target=$HOME "$dir"
+done

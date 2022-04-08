@@ -1,0 +1,103 @@
+# -------------------------------------------------------------------
+# Env exports
+# -------------------------------------------------------------------
+
+export XDG_CONFIG_HOME="$HOME/.config"
+
+export NVM_DIR="$HOME/.nvm"
+export DENO_INSTALL="$HOME/.deno"
+export GOPATH="$HOME/go"
+export DOTFILES="$HOME/.dotfiles"
+export PATH="$HOME/.local/bin:$PATH"
+export LANG="en_US.UTF-8"
+export LC_ALL="en_US.UTF-8"
+export EDITOR='code -n -w'
+export SSH_KEY_PATH="$HOME/.ssh/rsa_id"
+export DEFAULT_USER="$(whoami)"
+
+## GNU grep
+export PATH="/usr/local/opt/grep/libexec/gnubin:$PATH"
+
+## Ruby from brew
+export PATH="/usr/local/opt/ruby/bin:$PATH"
+export PATH="$(ruby -e 'puts Gem.bindir'):$PATH"
+export LDFLAGS="-L/usr/local/opt/ruby/lib"
+export CPPFLAGS="-I/usr/local/opt/ruby/include"
+export PKG_CONFIG_PATH="/usr/local/opt/ruby/lib/pkgconfig"
+
+# -------------------------------------------------------------------
+# Sources
+# -------------------------------------------------------------------
+
+# P10k theme
+[[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
+
+[[ -e "$(gem which colorls)" ]] && source $(dirname $(gem which colorls))/tab_complete.sh
+
+# zstyle ':completion:*' matcher-list '' \
+#   'm:{a-z\-}={A-Z\_}' \
+#   'r:[^[:alpha:]]||[[:alpha:]]=** r:|=* m:{a-z\-}={A-Z\_}' \
+#   'r:|?=** m:{a-z\-}={A-Z\_}'
+
+# -------------------------------------------------------------------
+# Key bindings
+# -------------------------------------------------------------------
+
+bindkey -s ^f "tmux-sessionizer\n"
+bindkey -s ^w "tmux-windowizer\n"
+
+# -------------------------------------------------------------------
+# Aliases
+# -------------------------------------------------------------------
+
+alias ll="ls -alh"
+alias cls="colorls"
+alias cll="colorls -alh"
+alias clgs="colorls -Al --gs --sd"
+alias clr="clear && printf '\e[3J'"
+alias print_node_modules='find . -name "node_modules" -type d -prune -print | xargs du -chs'
+alias delete_node_modules='find . -name "node_modules" -type d -prune -print -exec rm -rf '{}' \;'
+alias ws='webstorm `pwd`'
+
+# -------------------------------------------------------------------
+# Functions
+# -------------------------------------------------------------------
+
+goWork() {
+    # TODO
+}
+
+goPersonal() {
+    # TODO
+}
+
+validateYaml() {
+    python -c 'import yaml,sys;yaml.safe_load(sys.stdin)' < $1
+}
+
+wse () {
+  webstorm -e "$@"
+}
+
+cleanup-branches () {
+    git checkout master
+    git pull --rebase
+    ANYTHING_TO_REMOVE=$(git branch -r --merged | grep -v master | sed 's/origin\///')
+    if [[ ( -z "$ANYTHING_TO_REMOVE" ) ]]; then
+        echo "No merged remote branches to clean-up."
+        return 0
+    fi
+    git branch -r --merged | grep -v master | sed 's/origin\///' | xargs -n 1 echo git push --delete origin
+    if [[ ( -n "$@" ) && ( ( "$@" == "--dry-run" ) || ( "$@" == "-d" ) ) ]];then
+        return 0
+    fi
+    echo 'Enter "DELETE" followed by [ENTER] to perform the above actions.'
+    read del
+    if [[ ( -z "$del") || ! (  $del == "DELETE" ) ]]; then
+        echo "Not performing action..."
+        return 0
+    fi
+    git branch -r --merged | grep -v master | sed 's/origin\///' | xargs -n 1 git push --delete origin
+    echo "Branches removed. Pruning local of any references."
+    git remote prune origin
+}
