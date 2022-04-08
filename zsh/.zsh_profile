@@ -44,7 +44,6 @@ export PKG_CONFIG_PATH="/usr/local/opt/ruby/lib/pkgconfig"
 # -------------------------------------------------------------------
 
 bindkey -s ^f "tmux-sessionizer\n"
-bindkey -s ^w "tmux-windowizer\n"
 
 # -------------------------------------------------------------------
 # Aliases
@@ -64,11 +63,13 @@ alias ws='webstorm `pwd`'
 # -------------------------------------------------------------------
 
 goWork() {
-    # TODO
+    cp $HOME/.ssh/id_rsa.work $HOME/.ssh/id_rsa
+    cp $HOME/.ssh/id_rsa.pub.work $HOME/.ssh/id_rsa.pub
 }
 
 goPersonal() {
-    # TODO
+    cp $HOME/.ssh/id_rsa.personal $HOME/.ssh/id_rsa
+    cp $HOME/.ssh/id_rsa.pub.personal $HOME/.ssh/id_rsa.pub
 }
 
 validateYaml() {
