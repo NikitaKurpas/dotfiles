@@ -39,6 +39,10 @@ export PKG_CONFIG_PATH="/usr/local/opt/ruby/lib/pkgconfig"
 #   'r:[^[:alpha:]]||[[:alpha:]]=** r:|=* m:{a-z\-}={A-Z\_}' \
 #   'r:|?=** m:{a-z\-}={A-Z\_}'
 
+# nvm
+[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh" # This loads nvm
+[ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
+
 # -------------------------------------------------------------------
 # Key bindings
 # -------------------------------------------------------------------
