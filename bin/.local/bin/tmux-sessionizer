@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
 
-session=$(find ~ ~/work/ ~/personal/ -mindepth 1 -maxdepth 1 -type d | fzf -q "$1")
+session=$(find -L ~ ~/work/ ~/personal/ -mindepth 1 -maxdepth 1 -type d | fzf -q "$1")
 
 if [ -z $session ]; then
     exit 0

@@ -1,4 +1,14 @@
 # -------------------------------------------------------------------
+# zsh config
+# -------------------------------------------------------------------
+
+# fuzzy completion (see https://superuser.com/a/815317)
+zstyle ':completion:*' matcher-list '' \
+  'm:{a-z\-}={A-Z\_}' \
+  'r:[^[:alpha:]]||[[:alpha:]]=** r:|=* m:{a-z\-}={A-Z\_}' \
+  'r:|?=** m:{a-z\-}={A-Z\_}'
+
+# -------------------------------------------------------------------
 # Env exports
 # -------------------------------------------------------------------
 
@@ -34,14 +44,12 @@ export PKG_CONFIG_PATH="/usr/local/opt/ruby/lib/pkgconfig"
 
 [[ -e "$(gem which colorls)" ]] && source $(dirname $(gem which colorls))/tab_complete.sh
 
-# zstyle ':completion:*' matcher-list '' \
-#   'm:{a-z\-}={A-Z\_}' \
-#   'r:[^[:alpha:]]||[[:alpha:]]=** r:|=* m:{a-z\-}={A-Z\_}' \
-#   'r:|?=** m:{a-z\-}={A-Z\_}'
-
 # nvm
 [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh" # This loads nvm
 [ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
+
+# fzf
+[ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
 
 # -------------------------------------------------------------------
 # Key bindings
@@ -107,4 +115,16 @@ cleanup-branches () {
     git branch -r --merged | grep -v master | sed 's/origin\///' | xargs -n 1 git push --delete origin
     echo "Branches removed. Pruning local of any references."
     git remote prune origin
+}
+
+# Use fd instead of the default find command for listing path candidates.
+# - The first argument to the function ($1) is the base path to start traversal
+# - See the source code (completion.{bash,zsh}) for the details.
+_fzf_compgen_path() {
+  fd --hidden --follow --exclude ".git" --exclude "node_modules" . "$1"
+}
+
+# Use fd to generate the list for directory completion
+_fzf_compgen_dir() {
+  fd --type d --hidden --follow --exclude ".git" --exclude "node_modules" . "$1"
 }
