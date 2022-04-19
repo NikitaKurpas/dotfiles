@@ -108,3 +108,18 @@ source $ZSH/oh-my-zsh.sh
 # alias ohmyzsh="mate ~/.oh-my-zsh"
 
 source ~/.zsh_profile
+# BEGIN env Setup -- Managed by Ansible DO NOT EDIT.
+
+# Setup INDEED_ENV_DIR earlier.
+if [ -z "${INDEED_ENV_DIR}" ]; then
+    export INDEED_ENV_DIR="/Users/nkurpas/env"
+fi
+
+# Single-brace syntax because this is required in bash and sh alike
+if [ -e "${INDEED_ENV_DIR}/etc/indeedrc" ]; then
+    . "${INDEED_ENV_DIR}/etc/indeedrc"
+fi
+# END env Setup -- Managed by Ansible DO NOT EDIT.
+
+# To customize prompt, run `p10k configure` or edit ~/.p10k.zsh.
+[[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
