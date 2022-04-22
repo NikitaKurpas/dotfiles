@@ -51,6 +51,9 @@ export PKG_CONFIG_PATH="/usr/local/opt/ruby/lib/pkgconfig"
 # fzf
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
 
+# direnv
+eval "$(direnv hook zsh)"
+
 # -------------------------------------------------------------------
 # Key bindings
 # -------------------------------------------------------------------
@@ -121,10 +124,10 @@ cleanup-branches () {
 # - The first argument to the function ($1) is the base path to start traversal
 # - See the source code (completion.{bash,zsh}) for the details.
 _fzf_compgen_path() {
-  fd --hidden --follow --exclude ".git" --exclude "node_modules" . "$1"
+  fd --hidden --follow . "$1"
 }
 
 # Use fd to generate the list for directory completion
 _fzf_compgen_dir() {
-  fd --type d --hidden --follow --exclude ".git" --exclude "node_modules" . "$1"
+  fd --type d --hidden --follow . "$1"
 }
