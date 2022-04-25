@@ -24,6 +24,7 @@ export LC_ALL="en_US.UTF-8"
 export EDITOR='code -n -w'
 export SSH_KEY_PATH="$HOME/.ssh/rsa_id"
 export DEFAULT_USER="$(whoami)"
+export IS_DARK_MODE="$(defaults read -g AppleInterfaceStyle 2> /dev/null)"
 
 ## GNU grep
 export PATH="/usr/local/opt/grep/libexec/gnubin:$PATH"
@@ -54,6 +55,15 @@ export PKG_CONFIG_PATH="/usr/local/opt/ruby/lib/pkgconfig"
 # direnv
 eval "$(direnv hook zsh)"
 
+# Alacritty theme
+if [ -f ~/.alacritty/colors.yml ]; then
+  alacritty_light="solarized-light"
+  alacritty_dark="solarized-dark"
+
+  alacritty_theme="${${IS_DARK_MODE:+$alacritty_dark}:-$alacritty_light}"
+  sed -i "s/colors\:.*/colors: *$alacritty_theme/" ~/.alacritty/colors.yml
+fi
+
 # -------------------------------------------------------------------
 # Key bindings
 # -------------------------------------------------------------------
@@ -65,9 +75,10 @@ bindkey -s ^f "tmux-sessionizer\n"
 # -------------------------------------------------------------------
 
 alias ll="ls -alh"
-alias cls="colorls"
-alias cll="colorls -alh"
-alias clgs="colorls -Al --gs --sd"
+colorls_mode="${${IS_DARK_MODE:+dark}:-light}"
+alias cls="colorls --$colorls_mode"
+alias cll="colorls -alh --$colorls_mode"
+alias clgs="colorls -Al --gs --sd --$colorls_mode"
 alias clr="clear && printf '\e[3J'"
 alias print_node_modules='find . -name "node_modules" -type d -prune -print | xargs du -chs'
 alias delete_node_modules='find . -name "node_modules" -type d -prune -print -exec rm -rf '{}' \;'

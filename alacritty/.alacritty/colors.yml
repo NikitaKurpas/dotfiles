@@ -1,0 +1,182 @@
+themes:
+  # Tango Dark
+  tango-dark: &tango-dark
+    primary:
+      background: '0x000000'
+      foreground: '0xfffefe'
+    cursor:
+      text:     CellBackground
+      cursor:   '0xfffefe'
+    selection:
+      text:       CellBackground
+      background: '0xc1ddff'
+    normal:
+      black:   '0x000000'
+      red:     '0xd71e00'
+      green:   '0x5da602'
+      yellow:  '0xcfad00'
+      blue:    '0x417ab3'
+      magenta: '0x88658d'
+      cyan:    '0x00a7aa'
+      white:   '0xdbded8'
+    bright:
+      black:   '0x676965'
+      red:     '0xf44135'
+      green:   '0x98e342'
+      yellow:  '0xfcea60'
+      blue:    '0x83afd8'
+      magenta: '0xbc93b6'
+      cyan:    '0x37e5e7'
+      white:   '0xf1f1ef'
+
+  # Tango Light
+  tango-light: &tango-light
+    primary:
+      background: '0xfffefe'
+      foreground: '0x000000'
+    cursor:
+      text:     CellBackground
+      cursor:   CellForeground
+    selection:
+      text:       CellForeground
+      background: '0xc1ddff'
+    normal:
+      black:   '0x000000'
+      red:     '0xd71e00'
+      green:   '0x5da602'
+      yellow:  '0xcfad00'
+      blue:    '0x417ab3'
+      magenta: '0x88658d'
+      cyan:    '0x00a7aa'
+      white:   '0xdbded8'
+    bright:
+      black:   '0x676965'
+      red:     '0xf44135'
+      green:   '0x98e342'
+      yellow:  '0xfcea60'
+      blue:    '0x83afd8'
+      magenta: '0xbc93b6'
+      cyan:    '0x37e5e7'
+      white:   '0xf1f1ef'
+
+  # One Dark - https://github.com/atom/atom/tree/master/packages/one-dark-syntax
+  one-dark: &one-dark
+    primary:
+      background: '#282c34'
+      foreground: '#abb2bf'
+    cursor:
+      text:       CellBackground
+      cursor:     '#528bff' # syntax-cursor-color
+    selection:
+      text:       CellForeground
+      background: '#3e4451' # syntax-selection-color
+    normal:
+      black:      '#5c6370' # mono-3
+      red:        '#e06c75' # red 1
+      green:      '#98c379'
+      yellow:     '#e5c07b' # orange 2
+      blue:       '#61afef'
+      magenta:    '#c678dd'
+      cyan:       '#56b6c2'
+      white:      '#828997' # mono-2
+
+  # One Light - https://github.com/atom/atom/tree/master/packages/one-light-syntax
+  one-light: &one-light
+    primary:
+      background: '#fafafa'
+      foreground: '#383a42'
+    cursor:
+      text:       CellBackground
+      cursor:     '#526eff' # syntax-cursor-color
+    selection:
+      text:       CellForeground
+      background: '#e5e5e6' # syntax-selection-color
+    normal:
+      black:      '#696c77' # mono-2
+      red:        '#e45649' # red 1
+      green:      '#50a14f'
+      yellow:     '#c18401' # orange 2
+      blue:       '#4078f2'
+      magenta:    '#a626a4'
+      cyan:       '#0184bc'
+      white:      '#a0a1a7' # mono-3
+
+  # Solarized Dark
+  solarized-dark: &solarized-dark
+    primary:
+      background: '#002b36' # base03
+      foreground: '#839496' # base0
+    cursor:
+      text:   '#002b36' # base03
+      cursor: '#839496' # base0
+    normal:
+      black:   '#073642' # base02
+      red:     '#dc322f' # red
+      green:   '#859900' # green
+      yellow:  '#b58900' # yellow
+      blue:    '#268bd2' # blue
+      magenta: '#d33682' # magenta
+      cyan:    '#2aa198' # cyan
+      white:   '#eee8d5' # base2
+    bright:
+      black:   '#002b36' # base03
+      red:     '#cb4b16' # orange
+      green:   '#586e75' # base01
+      yellow:  '#657b83' # base00
+      blue:    '#839496' # base0
+      magenta: '#6c71c4' # violet
+      cyan:    '#93a1a1' # base1
+      white:   '#fdf6e3' # base3
+
+  # Solarized Light
+  solarized-light: &solarized-light
+    primary:
+      background: '#fdf6e3' # base3
+      foreground: '#657b83' # base00
+    cursor:
+      text:   '#fdf6e3' # base3
+      cursor: '#657b83' # base00
+    normal:
+      black:   '#073642' # base02
+      red:     '#dc322f' # red
+      green:   '#859900' # green
+      yellow:  '#b58900' # yellow
+      blue:    '#268bd2' # blue
+      magenta: '#d33682' # magenta
+      cyan:    '#2aa198' # cyan
+      white:   '#eee8d5' # base2
+    bright:
+      black:   '#002b36' # base03
+      red:     '#cb4b16' # orange
+      green:   '#586e75' # base01
+      yellow:  '#657b83' # base00
+      blue:    '#839496' # base0
+      magenta: '#6c71c4' # violet
+      cyan:    '#93a1a1' # base1
+      white:   '#fdf6e3' # base3
+
+  # Dracula
+  dracula: &dracula
+    primary:
+      background: '#282a36'
+      foreground: '#f8f8f2'
+    normal:
+      black:   '#000000'
+      red:     '#ff5555'
+      green:   '#50fa7b'
+      yellow:  '#f1fa8c'
+      blue:    '#caa9fa'
+      magenta: '#ff79c6'
+      cyan:    '#8be9fd'
+      white:   '#bfbfbf'
+    bright:
+      black:   '#575b70'
+      red:     '#ff6e67'
+      green:   '#5af78e'
+      yellow:  '#f4f99d'
+      blue:    '#caa9fa'
+      magenta: '#ff92d0'
+      cyan:    '#9aedfe'
+      white:   '#e6e6e6'
+
+colors: *solarized-light
