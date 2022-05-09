@@ -101,7 +101,7 @@ themes:
       cyan:       '#0184bc'
       white:      '#a0a1a7' # mono-3
 
-  # Selenized Black
+  # Selenized Black - https://github.com/jan-warchol/selenized/blob/master/terminals/alacritty/selenized-black.yml
   selenized-black: &selenized-black
     primary:
       background: '0x181818'
@@ -125,7 +125,7 @@ themes:
       cyan:    '0x56d8c9'
       white:   '0xdedede'
 
-  # Selenized Dark
+  # Selenized Dark - https://github.com/jan-warchol/selenized/blob/master/terminals/alacritty/selenized-dark.yml
   selenized-dark: &selenized-dark
     primary:
       background: '0x103c48'
@@ -149,7 +149,7 @@ themes:
       cyan:    '0x53d6c7'
       white:   '0xcad8d9'
 
-  # Selenized Light
+  # Selenized Light - https://github.com/jan-warchol/selenized/blob/master/terminals/alacritty/selenized-light.yml
   selenized-light: &selenized-light
     primary:
       background: '0xfbf3db'
@@ -173,7 +173,7 @@ themes:
       cyan:    '0x00978a'
       white:   '0x3a4d53'
 
-  # Selenized White
+  # Selenized White - https://github.com/jan-warchol/selenized/blob/master/terminals/alacritty/selenized-white.yml
   selenized-white: &selenized-white
     primary:
       background: '0xffffff'
