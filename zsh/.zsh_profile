@@ -57,8 +57,8 @@ eval "$(direnv hook zsh)"
 
 # Alacritty theme
 if [ -f ~/.alacritty/colors.yml ]; then
-  alacritty_light="solarized-light"
-  alacritty_dark="solarized-dark"
+  alacritty_light="selenized-light"
+  alacritty_dark="selenized-dark"
 
   alacritty_theme="${${IS_DARK_MODE:+$alacritty_dark}:-$alacritty_light}"
   sed -i "s/colors\:.*/colors: *$alacritty_theme/" ~/.alacritty/colors.yml
