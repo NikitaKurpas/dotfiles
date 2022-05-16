@@ -24,7 +24,7 @@ export LC_ALL="en_US.UTF-8"
 export EDITOR='code -n -w'
 export SSH_KEY_PATH="$HOME/.ssh/rsa_id"
 export DEFAULT_USER="$(whoami)"
-export IS_DARK_MODE="$(defaults read -g AppleInterfaceStyle 2> /dev/null)"
+export IS_DARK="$(defaults read -g AppleInterfaceStyle 2> /dev/null)"
 
 ## GNU grep
 export PATH="/usr/local/opt/grep/libexec/gnubin:$PATH"
@@ -57,10 +57,10 @@ eval "$(direnv hook zsh)"
 
 # Alacritty theme
 if [ -f ~/.alacritty/colors.yml ]; then
-  alacritty_light="selenized-light"
-  alacritty_dark="selenized-dark"
+  alacritty_light="gruvbox-light"
+  alacritty_dark="gruvbox-dark"
 
-  alacritty_theme="${${IS_DARK_MODE:+$alacritty_dark}:-$alacritty_light}"
+  alacritty_theme="${${IS_DARK:+$alacritty_dark}:-$alacritty_light}"
   sed -i "s/colors\:.*/colors: *$alacritty_theme/" ~/.alacritty/colors.yml
 fi
 
@@ -75,7 +75,7 @@ bindkey -s ^f "tmux-sessionizer\n"
 # -------------------------------------------------------------------
 
 alias ll="ls -alh"
-colorls_mode="${${IS_DARK_MODE:+dark}:-light}"
+colorls_mode="${${IS_DARK:+dark}:-light}"
 alias cls="colorls --$colorls_mode"
 alias cll="colorls -alh --$colorls_mode"
 alias clgs="colorls -Al --gs --sd --$colorls_mode"
