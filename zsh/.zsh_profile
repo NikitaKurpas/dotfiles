@@ -23,17 +23,23 @@ bindkey -M vicmd v edit-command-line
 
 export XDG_CONFIG_HOME="$HOME/.config"
 
+export WORK_DIR="work"
+export PERSONAL_DIR="personal"
+
 export NVM_DIR="$HOME/.nvm"
 export DENO_INSTALL="$HOME/.deno"
 export GOPATH="$HOME/go"
 export DOTFILES="$HOME/.dotfiles"
-export PATH="$HOME/.local/bin:$PATH"
 export LANG="en_US.UTF-8"
 export LC_ALL="en_US.UTF-8"
 export EDITOR='vim'
 export SSH_KEY_PATH="$HOME/.ssh/rsa_id"
 export DEFAULT_USER="$(whoami)"
 export IS_DARK="$(defaults read -g AppleInterfaceStyle 2> /dev/null)"
+
+export PATH="$HOME/.local/bin:$PATH"
+[ ! -z "$WORK_DIR" ] && export PATH="$HOME/$WORK_DIR/bin:$PATH"
+[ ! -z "$PERSONAL_DIR" ] && export PATH="$HOME/$PERSONAL_DIR/bin:$PATH"
 
 ## GNU grep
 export PATH="/usr/local/opt/grep/libexec/gnubin:$PATH"
@@ -97,19 +103,19 @@ alias ws='webstorm `pwd`'
 # Functions
 # -------------------------------------------------------------------
 
-goWork() {
+go_work() {
     cp $HOME/.ssh/id_rsa.work $HOME/.ssh/id_rsa
     cp $HOME/.ssh/id_rsa.pub.work $HOME/.ssh/id_rsa.pub
     eval "$(ssh-agent -s)" 1>/dev/null
 }
 
-goPersonal() {
+go_personal() {
     cp $HOME/.ssh/id_rsa.personal $HOME/.ssh/id_rsa
     cp $HOME/.ssh/id_rsa.pub.personal $HOME/.ssh/id_rsa.pub
     eval "$(ssh-agent -s)" 1>/dev/null
 }
 
-validateYaml() {
+validatey_yaml() {
     python -c 'import yaml,sys;yaml.safe_load(sys.stdin)' < $1
 }
 
@@ -117,7 +123,7 @@ wse () {
   webstorm -e "$@"
 }
 
-cleanup-branches () {
+cleanup_branches () {
     git checkout master
     git pull --rebase
     ANYTHING_TO_REMOVE=$(git branch -r --merged | grep -v master | sed 's/origin\///')
