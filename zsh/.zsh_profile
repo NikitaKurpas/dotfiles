@@ -8,6 +8,15 @@ zstyle ':completion:*' matcher-list '' \
   'r:[^[:alpha:]]||[[:alpha:]]=** r:|=* m:{a-z\-}={A-Z\_}' \
   'r:|?=** m:{a-z\-}={A-Z\_}'
 
+# Find all keybindings: bindkey | fzf 
+# Enter vi mode: ^X^V
+# Now all you need to do ESC v, and zsh will launch $VISUAL or $EDITOR,
+# allowing you to edit the current command to your hearts content, and 
+# once you save & close your editor’s window, ZSH will execute your command.
+autoload -U edit-command-line
+zle -N edit-command-line
+bindkey -M vicmd v edit-command-line
+
 # -------------------------------------------------------------------
 # Env exports
 # -------------------------------------------------------------------
@@ -21,7 +30,7 @@ export DOTFILES="$HOME/.dotfiles"
 export PATH="$HOME/.local/bin:$PATH"
 export LANG="en_US.UTF-8"
 export LC_ALL="en_US.UTF-8"
-export EDITOR='code -n -w'
+export EDITOR='vim'
 export SSH_KEY_PATH="$HOME/.ssh/rsa_id"
 export DEFAULT_USER="$(whoami)"
 export IS_DARK="$(defaults read -g AppleInterfaceStyle 2> /dev/null)"
