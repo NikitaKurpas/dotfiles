@@ -109,10 +109,22 @@ go_work() {
     eval "$(ssh-agent -s)" 1>/dev/null
 }
 
+make_work() {
+  git config core.sshCommand 'ssh -i ~/.ssh/id_rsa.work'
+  git config user.name "Nikita Kurpas"
+  git config user.email "nkurpas@indeed.com"
+}
+
 go_personal() {
     cp $HOME/.ssh/id_rsa.personal $HOME/.ssh/id_rsa
     cp $HOME/.ssh/id_rsa.pub.personal $HOME/.ssh/id_rsa.pub
     eval "$(ssh-agent -s)" 1>/dev/null
+}
+
+make_personal() {
+  git config core.sshCommand 'ssh -i ~/.ssh/id_rsa.personal'
+  git config user.name "Nikita Kurpas"
+  git config user.email "nikitakurpas@gmail.com"
 }
 
 validatey_yaml() {
