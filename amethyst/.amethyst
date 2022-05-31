@@ -210,8 +210,6 @@
         "com.apple.finder",
         "com.apple.systempreferences",
         "com.googlecode.munki.ManagedSoftwareCenter",
-        "com.agilebits.onepassword7",
-        "com.agilebits.onepassword8",
         "com.jetbrains.toolbox",
         "com.amethyst.Amethyst",
         "com.valvesoftware.steam",
