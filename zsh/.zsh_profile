@@ -70,7 +70,16 @@ export PKG_CONFIG_PATH="/usr/local/opt/ruby/lib/pkgconfig"
 # direnv
 eval "$(direnv hook zsh)"
 
-# Alacritty theme
+# -------------------------------------------------------------------
+# Themes
+# -------------------------------------------------------------------
+
+# bat
+bat_light=gruvbox-light
+bat_dark=gruvbox-dark
+export BAT_THEME="${${IS_DARK:+$bat_dark}:-$bat_light}"
+
+# Alacritty
 if [ -f ~/.alacritty/colors.yml ]; then
   alacritty_light="gruvbox-light"
   alacritty_dark="gruvbox-dark"
@@ -125,6 +134,9 @@ make_personal() {
   git config core.sshCommand 'ssh -i ~/.ssh/id_rsa.personal'
   git config user.name "Nikita Kurpas"
   git config user.email "nikitakurpas@gmail.com"
+  if [ -f ./package.json ]; then
+    npm config set registry=https://registry.npmjs.org -L project
+  fi
 }
 
 validatey_yaml() {
