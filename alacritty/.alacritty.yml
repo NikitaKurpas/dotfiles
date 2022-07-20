@@ -505,6 +505,10 @@ hints:
   #   binding:
   #     key: U
   #     mods: Control|Shift
+   - regex: "\\d{4}-\\d\\d-\\d\\dT\\d\\d:\\d\\d:\\d\\d(\\.\\d+)?(([+-]\\d\\d:\\d\\d)|Z)?"
+     action: Copy
+     mouse:
+       enabled: true
 
 # Mouse bindings
 #
