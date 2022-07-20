@@ -36,6 +36,8 @@ export EDITOR='vim'
 export SSH_KEY_PATH="$HOME/.ssh/rsa_id"
 export DEFAULT_USER="$(whoami)"
 export IS_DARK="$(defaults read -g AppleInterfaceStyle 2> /dev/null)"
+export LESS='--mouse --wheel-lines 3'
+export BAT_PAGER="less -R"
 
 export PATH="$HOME/.local/bin:$PATH"
 [ ! -z "$WORK_DIR" ] && export PATH="$HOME/$WORK_DIR/bin:$PATH"
@@ -181,3 +183,4 @@ _fzf_compgen_path() {
 _fzf_compgen_dir() {
   fd --type d --hidden --follow . "$1"
 }
+
