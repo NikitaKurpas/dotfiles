@@ -208,13 +208,22 @@
     },
     "floating": [
         "com.apple.finder",
+        "com.apple.calculator",
         "com.apple.systempreferences",
+        "com.apple.ActivityMonitor",
         "com.googlecode.munki.ManagedSoftwareCenter",
+        {
+            "id": "*jetbrains*",
+            "window-titles": ["Rollback*", "Preferences", "Plugin*", "Tip of the*", "Confi*"]
+        },
         "com.jetbrains.toolbox",
         "com.amethyst.Amethyst",
         "com.valvesoftware.steam",
         "com.nikolaeu.numi-setapp",
-        "com.wiheads.paste-setapp"
+        "com.wiheads.paste-setapp",
+        "com.agilebits.onepassword",
+        "com.1password.1password*",
+        "com.culturedcode.Things*"
     ],
     "floating-is-blacklist": true,
     "float-small-windows": true,
