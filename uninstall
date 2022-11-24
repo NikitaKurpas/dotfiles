@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
 
-declare -a dirs=("alacritty" "amethyst" "bin" "config" "fzf" "tmux" "vim" "zsh")
+declare -a dirs=("alacritty" "amethyst" "bin" "config" "git" "fzf" "tmux" "vim" "zsh")
 
 for dir in "${dirs[@]}"
 do
